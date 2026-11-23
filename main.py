@@ -24,8 +24,8 @@ def main() -> None:
     path = "/output/entry.txt"
     with open(path, "w", encoding="utf-8") as f:
         f.write(word)
-    # The grader collects outputs as another user: leave the file
-    # readable by everyone. Never chmod /output itself.
+    # The grader's collector runs as a different user, so the file
+    # must be world-readable; the /output directory itself is left alone.
     os.chmod(path, 0o644)
     # Verify the written word by reading it back: the entry on disk
     # must be exactly the word this program produced.
